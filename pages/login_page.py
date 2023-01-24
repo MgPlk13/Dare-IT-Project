@@ -8,8 +8,8 @@ class LoginPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-        self.login_field_xpath = driver.find_element(By.XPATH, PageLocators.login_field_xpath)
-        self. password_field_xpath = driver.find_element(By.XPATH, PageLocators.password_field_xpath)
+        self.login_field_xpath = driver.find_element(By.XPATH, PageLocator.login_field_xpath)
+        self. password_field_xpath = driver.find_element(By.XPATH, PageLocator.password_field_xpath)
 
 
 
