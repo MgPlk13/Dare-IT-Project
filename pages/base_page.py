@@ -1,22 +1,17 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
 
 
-class BasePage:
-
-    def __init__(self, driver):
+class BasePage():
+    def __init__(self, driver: WebDriver):
         self.driver = driver
 
+    def sendKeys(self, selector, value):
+        return self.driver.find_element(By.XPATH, selector).send_keys(value)
 
-    def click(self, locator):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).click()
+    def clickElement(self, selector):
+        return self.driver.find_element(By.XPATH, selector).click()
 
-    # def clear(self, lacator):
-    #     WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(lacator)).clear()
-
-    def send_Key(self, locator, text):
-        return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator)).sens_key(text)
-
-    # def title_(self, locator, title):
-    #     return WebDriverWait(self.driver, 10).until(EC.title_is(title))
+    def getTitle(self, url):
+        self.driver.get(url)
+        return self.driver.title

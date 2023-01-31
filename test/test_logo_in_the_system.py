@@ -7,6 +7,7 @@ from selenium import webdriver
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login_page import *
+from pages.dashboard import Dashboard
 
 
 class Test(unittest.TestCase):
@@ -21,22 +22,23 @@ class Test(unittest.TestCase):
         self.driver.implicitly_wait((IMPLICITLY_WAIT))
         self.driver.fullscreen_window()
 
-    def getTitle(self, url):
-        self.driver.get(url)
-        return self.driver.title
+    def test_run(self):
+        log = LoginPage(self.driver)
+        # log.pageTitle()
+        time.sleep(2)
+        log.setUsername(self.login_)
+        time.sleep(2)
+        log.setPassword(self.password_)
+        time.sleep(3)
+        log.clickSingIn()
+        time.sleep(2)
+        # dashboard_page = Dashboard(self.driver)
+        # dashboard_page.title_of_page()
 
-    # def test_check_title(self):
-    #     actialTitle = self.getTitle("https://scouts-test.futbolkolektyw.pl/")
-    #     expectedTitle = "Scouts panel"
-    #     assert actialTitle != expectedTitle
 
-    def test_login(self):
-        str_ = "@"
-        self.assertIn(str_, self.login_)
 
     def ternDown(self):
         self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main()

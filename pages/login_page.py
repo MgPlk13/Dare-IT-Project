@@ -1,16 +1,30 @@
-from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from recources.locators import PageLocator
+
 
 
 class LoginPage(BasePage):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-        self.login_field_xpath = driver.find_element(By.XPATH, PageLocator.login_field_xpath)
-        self. password_field_xpath = driver.find_element(By.XPATH, PageLocator.password_field_xpath)
+    login_field_xpath = "//*[@id='login']"
+    password_field_xpath = "//*[@id='password']"
+    sing_in_button_xpath = "//button[@type='submit']/span[1]"
+    expected_title = "//*[contains(text(),'Scouts panel')]"
+    # add_player_xpath ="//*[@class='MuiButton-label']"
+    title_url = "https://scouts-test.futbolkolektyw.pl/"
+    expectedTitle = "Scouts panel"
+    login_true = "user01@getnada.com"
+    password_true = "Test-1234"
 
+    def setUsername(self, login):
+        self.sendKeys(self.login_field_xpath, login)
+
+    def setPassword(self, password):
+        self.sendKeys(self.password_field_xpath, password)
+
+    def clickSingIn(self):
+        self.clickElement(self.sing_in_button_xpath)
+
+    # def pageTitle(self):
+    #     assert self.getTitle(self.title_url) == self.expectedTitle
 
 
 
