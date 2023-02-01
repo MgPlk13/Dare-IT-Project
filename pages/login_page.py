@@ -8,7 +8,6 @@ class LoginPage(BasePage):
     password_field_xpath = "//*[@id='password']"
     sing_in_button_xpath = "//button[@type='submit']/span[1]"
     expected_title = "//*[contains(text(),'Scouts panel')]"
-    # add_player_xpath ="//*[@class='MuiButton-label']"
     title_url = "https://scouts-test.futbolkolektyw.pl/"
     expectedTitle = "Scouts panel"
     login_true = "user01@getnada.com"

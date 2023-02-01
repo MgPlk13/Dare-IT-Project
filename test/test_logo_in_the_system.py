@@ -7,7 +7,7 @@ from selenium import webdriver
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login_page import *
-from pages.dashboard import Dashboard
+
 
 
 class Test(unittest.TestCase):
@@ -34,7 +34,6 @@ class Test(unittest.TestCase):
         time.sleep(2)
         # dashboard_page = Dashboard(self.driver)
         # dashboard_page.title_of_page()
-
 
 
     def ternDown(self):
