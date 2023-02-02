@@ -25,10 +25,10 @@ class Test(unittest.TestCase):
         self.driver.get(url)
         return self.driver.title
 
-    # def test_check_title(self):
-    #     actialTitle = self.getTitle("https://scouts-test.futbolkolektyw.pl/")
-    #     expectedTitle = "Scouts panel"
-    #     assert actialTitle != expectedTitle
+    def test_check_title(self):
+        actialTitle = self.getTitle("https://scouts-test.futbolkolektyw.pl/")
+        expectedTitle = "Scouts panel"
+        assert actialTitle != expectedTitle
 
     def test_login(self):
         str_ = "@"
