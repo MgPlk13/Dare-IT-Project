@@ -2,32 +2,36 @@ import unittest
 import os
 import time
 
-from selenium.webdriver.chrome.service import Service
+
 from selenium import webdriver
-from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
-from webdriver_manager.chrome import ChromeDriverManager
-from pages.add_player_base import AddPlayer
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+from pages.base_page import BasePage
 from pages.login_page import LoginPage
-from recources.locators import TupleAddPlayers
+from pages.web_elament_page import WebElementPage
+from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class TestPlayer(unittest.TestCase):
+class Test(unittest.TestCase):
 
     def setUp(self):
         os.chmod(DRIVER_PATH, 755)
         self.driver_service = Service(executable_path=DRIVER_PATH)
         self.driver = webdriver.Chrome(service=self.driver_service)
-        self.driver.get("https://scouts-test.futbolkolektyw.pl/en")
+        self.driver.get("https://scouts-test.futbolkolektyw.pl/pl/players?lng=pl&subpath=pl&start=1")
         self.driver.implicitly_wait((IMPLICITLY_WAIT))
         self.driver.fullscreen_window()
-        self.players = AddPlayer(self.driver)
+        self.web_el = WebElementPage(self.driver)
         self.logo = LoginPage(self.driver)
 
-    def test_add_player(self):
+    def test_login_in_system(self):
         self.logo.logo_in_form(*self.logo.tuple_logo_in_form)
-        time.sleep(3)
-        self.players.form_add_players(*AddPlayer.tuple_players)
-        time.sleep(3)
+        self.web_el.click_()
+        self.web_el.find_web_element()
+        time.sleep(2)
+
+
 
     def ternDown(self):
         self.driver.quit()

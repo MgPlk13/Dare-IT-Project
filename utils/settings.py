@@ -2,6 +2,7 @@ import sys
 import os
 
 from  selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 
 SYSTEM =sys.platform
 PATH_PROJECT = os.path.dirname(os.path.abspath(__file__))
@@ -15,9 +16,10 @@ DRIVER_PATH = os.path.join(PATH_PROJECT, "../driver", CHROME_DRIVER)
 IMPLICITLY_WAIT = 8
 EXPLICITLY_WAIT = 30
 
-DEFAUND_LOCATOR_TYPE = By.XPATH
-
+DEFAUlD_LOCATOR_TYPE = By.XPATH
 if SYSTEM == "windows":
     CHROME_DRIVER = "chromedriver.exe"
 else:
     CHROME_DRIVER = "chromedriver"
+
+

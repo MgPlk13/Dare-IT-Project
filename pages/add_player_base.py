@@ -11,13 +11,15 @@ class AddPlayer(BasePage):
     position_xpath = "//*[@name='mainPosition']"
     button_xpath = "//*[@type='submit']"
 
+    tuple_players = ("python123@gmail.com", "Python", "Developer", "21/03/2000", "junior")
+
     """ Send element at form add player """
 
     def form_add_players(self, email, name, surname, birthday, position):
-        self.clickElement(self.add_player_xpath)
-        self.sendKeys(self.email_xpath, email)
-        self.sendKeys(self.name_xpath, name)
-        self.sendKeys(self.surname_xpath, surname)
-        self.sendKeys(self.birthday_xpath, birthday)
-        self.sendKeys(self.position_xpath, position)
-        self.clickElement(self.button_xpath)
+        self.click_element(self.add_player_xpath)
+        self.send_keys(self.email_xpath, email)
+        self.send_keys(self.name_xpath, name)
+        self.send_keys(self.surname_xpath, surname)
+        self.send_keys(self.birthday_xpath, birthday)
+        self.send_keys(self.position_xpath, position)
+        self.click_element(self.button_xpath)
